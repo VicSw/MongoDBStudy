@@ -9,7 +9,7 @@ var UserSchema=new mongoose.Schema({
 
 //声明了一个方法  自定义静态方法
 UserSchema.statics.findByISBN=function(isbn,cb){
-	this.findone({isbn:isbn},function(){
+	this.findOne({isbn:isbn},function(err,doc){
 		cb(err,doc);
 	});
 };
@@ -21,7 +21,7 @@ UserSchema.methods.print=function(){
 
 }
 
-var User=mongoose.model('User',BooksSchema);
+var User=mongoose.model('User',UserSchema);
 
 var user=new User({
 	name:'sw'
